@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="lib/ionic/css/ionic.css">
+<link rel="stylesheet" href="font/iconfont.css">
+  <script src="lib/ionic/js/ionic.bundle.min.js" charset="utf-8"></script>
+  <title>Document</title>
+  <style media="screen">
+    .celantb{
+      background-image: url('image/1.JPG');
+      background-size: 100%;
+     padding: 0;
+     position: relative;
+    }
+    .celandiv{
+      margin-left:20px;
+      margin-top:-15px;
+    }
+    .celandiv p{
+      color: white;
+    }
+    .xiaoxih1{
+
+    }
+    .xiaoxih1 span{
+      width:80px;
+      height: 20px;
+      padding:3px 18px 3px 18px;
+      border: 1px solid white;
+      border-radius:2px;
+      font-size:12px;
+    }
+    .xiaoxih1 .span1{
+      background-color:white;
+      color:blue;
+    }
+    .xiaoxih1 .span2{
+      background-color:white;
+      color:blue;
+    }
+
+    .lianxirencol{
+      padding-top:15px;padding-bottom:15px;
+    }
+    .lianxirenitem,.dongtaiitem{
+      height:40px;
+      display:flex;
+      align-items:center;
+      font-family: "楷体"
+    }
+    .lianxirenitem i{
+      color: grey;
+    }
+
+    .lianxirensnajian{
+      font-size:18px
+    }
+    .lianxirenspan1,.dongtaispan1{
+      margin-left:10px;
+    }
+    .lianxirenspan2{
+      position:absolute;right:20px;
+      font-size: 10px
+    }
+    .dongtaii{
+      font-size: 20px;
+    }
+    .dongtaispan2{
+      position:absolute;right:20px;
+      font-size: 20px;
+    }
+    .dianhua{
+
+    }
+    .dianhua .itemtou{
+      display: flex;
+      align-items: center ;
+    }
+    .xz::before{
+      -webkit-transform:rotateZ(45deg)
+    }
+    .xz1::before{
+      -webkit-transform:rotateZ(-135deg)
+    }
+    .dianhua .item-avatar{
+      height: 25px;
+    }
+    .xx .item-avatar{
+      height: 25px;
+    }
+  </style>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+   <ion-nav-view></ion-nav-view>
+</body>
+<script type="text/javascript">
+  var app=angular.module('myApp',['ionic']);
+  app.config(['$stateProvider','$urlRouterProvider','$ionicConfigProvider',function($stateProvider,$urlRouterProvider,$ionicConfigProvider){
+    $ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.ios.tabs.position('bottom');
+    $ionicConfigProvider.platform.android.tabs.style('standard');
+    $ionicConfigProvider.platform.android.tabs.position('standard');
+
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+    $ionicConfigProvider.platform.android.navBar.alignTitle('left');
+
+    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
+    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
+
+    $ionicConfigProvider.platform.ios.views.transition('ios');
+    $ionicConfigProvider.platform.android.views.transition('android');
+    $ionicConfigProvider.navBar.alignTitle('center'); // 标题位置
+		$ionicConfigProvider.navBar.positionPrimaryButtons('left'); // 主要操作按钮位置
+		$ionicConfigProvider.navBar.positionSecondaryButtons('right'); //次要操作按钮位置
+      $stateProvider.state('app',{
+        url:'/app',
+
+        templateUrl:'view/menu.html'
+      }).state('app.tabs',{
+        url:'/tabs',
+        templateUrl:'view/tabs.html'
+      }).state('app.tabs.xiaoxi',{
+        url:'/xiaoxi',
+        views:{
+          'tab-xiaoxi':{
+            templateUrl:'view/templates/xiaoxi.html'
+          }
+        }
+      }).state('app.tabs.xiaoxi.xx',{
+        url:'/xx',
+        views:{
+          'xx' : {
+      				templateUrl:'view/templates/xx.html',
+      				controller:'message'
+      			}
+        }
+      }).state('app.tabs.xiaoxi.dianhua',{
+        url:'/dianhua',
+        views:{
+          'dianhua' : {
+      				templateUrl:'view/templates/dianhua.html',
+      				controller:'message'
+      			}
+        }
+      }).state('app.tabs.lianxiren',{
+        url:'/lianxiren',
+        views:{
+          'tab-lianxiren':{
+            templateUrl:'view/templates/lianxiren.html'
+          }
+        }
+      }).state('app.tabs.dongtai',{
+        url:'/dongtai',
+        views:{
+          'tab-dongtai':{
+            templateUrl:'view/templates/dongtai.html'
+          }
+        }
+      }).state('chaoji',{
+        url:'/chaoji',
+        templateUrl:'view/templates/chaojihuiyuan.html',
+        controller:function($scope,$state){
+          $scope.doSomething=function(){
+            $state.go('app.tabs.xiaoxi.xx')
+          }
+        }
+      }).state('app.qianbao',{
+        url:'/qianbao',
+        templateUrl:'view/templates/qianbao.html'
+      }).state('app.gexingzhuangban',{
+        url:'/gexingzhuangban',
+        templateUrl:'view/templates/gexingzhuangban.html'
+      }).state('app.wodeshoucang',{
+        url:'/wodeshoucang',
+        templateUrl:'view/templates/wodeshoucang.html'
+      }).state('app.wodexiangce',{
+        url:'/wodexiangce',
+        templateUrl:'view/templates/wodexiangce.html'
+      }).state('app.wodewenjian',{
+        url:'/wodewenjian',
+        templateUrl:'view/templates/wodewenjian.html'
+      })
+      $urlRouterProvider.otherwise('/app/tabs/xiaoxi/xx')
+  }])
+
+  app.controller('myController',['$scope',function($scope) {
+
+  }])
+  app.controller('message',['$scope','$state',function($scope,$state){
+      $scope.xiaoxi=function(){
+        $state.go('app.tabs.xiaoxi.xx')
+      }
+      $scope.dianhua=function(){
+        $state.go('app.tabs.xiaoxi.dianhua')
+      }
+  }])
+</script>
+</html>
